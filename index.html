@@ -102,7 +102,7 @@ C.fotos.forEach((f,i)=>{const b=mk('button','pol','<img src="'+PH[i]+'" alt="'+f
 C.amo.forEach(t=>$('#love').append(mk('div','',t)));
 /* mapa */
 const map=L.map('map',{scrollWheelZoom:false}),mks=[];
-L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',{maxZoom:18,attribution:'&copy; OpenStreetMap &copy; CARTO'}).addTo(map);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; OpenStreetMap contributors'}).addTo(map);
 C.lugares.forEach(([n,la,lo,t])=>{const k=L.marker([la,lo],{icon:L.divIcon({html:'❤️',className:'pin',iconSize:[28,28]})}).addTo(map).bindPopup('<b>'+n+'</b><br>'+t+'<br><a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query='+la+','+lo+'">Abrir en Google Maps</a>');mks.push(k);
 const c=mk('button','',n);c.onclick=()=>{map.flyTo([la,lo],11);k.openPopup()};$('#chips').append(c)});
 map.fitBounds(L.latLngBounds(C.lugares.map(p=>[p[1],p[2]])).pad(.2));
